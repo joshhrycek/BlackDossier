@@ -16,9 +16,8 @@ function getDataFromComicvine(serachTerm, callback) {
     $.ajax(settings);
 }
 
-function displayComicvineData() {
-//    $(".main").html(`<p>Description: ${results[0].deck}<p>`)
-
+function displayComicvineData(data) {
+    $('main').html(renderHeroPage(data))
 }
 
 function getDataFromGoodreads() {
@@ -47,12 +46,13 @@ function getSearchTerm() {
     $('form').on('submit', event => {
         event.preventDefault();
         var query = $(".serach-box").val()
-        getDataFromComicvine(query, displayComicvineData())
+        getDataFromComicvine(query, displayComicvineData)
     })
 }
 
-function renderHeroPage() {
-
+function renderHeroPage(results) {
+    return `<h2>${results.name}</h2>
+    <p>${results.deck}</p>`
 }
 
 function renderStoryPage() {
