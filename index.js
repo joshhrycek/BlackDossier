@@ -4,12 +4,13 @@ const AMAZON_URL = ""
 
 function getDataFromComicvine(serachTerm, callback) {
     const settings = {
-        URL: COMICVINE_URL,
+        url: COMICVINE_URL,
         data: {
             api_key : "a13358abcad5c60e3c10a801fdc83a487e50c2a8",
             filter : `name:${serachTerm}`,
+            format: "json"
         },
-        datatype: "jsonp",
+        datatype: "json",
         type: "GET",
         success: callback
     };
@@ -45,14 +46,13 @@ function displayAmazonData() {
 function getSearchTerm() {
     $('form').on('submit', event => {
         event.preventDefault();
-        var query = $(".serach-box").val()
+        let query = $(".serach-box").val()
         getDataFromComicvine(query, displayComicvineData)
     })
 }
 
 function renderHeroPage(data) {
-    return `<h2>${data.results.name}</h2>
-    <p>${data.results.deck}</p>`
+    return `<h2>${data.results[0].deck}</h2>`
 }
 
 function renderStoryPage() {
