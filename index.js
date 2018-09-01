@@ -50,9 +50,9 @@ function getSearchTerm() {
     })
 }
 
-function renderHeroPage(results) {
-    return `<h2>${results.name}</h2>
-    <p>${results.deck}</p>`
+function renderHeroPage(data) {
+    return `<h2>${data.results.name}</h2>
+    <p>${data.results.deck}</p>`
 }
 
 function renderStoryPage() {
